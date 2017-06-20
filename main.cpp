@@ -3,6 +3,10 @@
 #include "tinyc2.h"
 #include "Tinyc2Debug.hpp"
 
+#define SPEED 70.0f
+#define COLOR_NORMAL sf::Color(41, 128, 185)
+#define COLOR_HIT sf::Color(231, 76, 60)
+
 int main()
 {
         sf::ContextSettings settings;
@@ -27,6 +31,15 @@ int main()
                                         event.key.code == sf::Keyboard::Q) {
                                 window.close();
                         }
+                }
+
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                }
+                if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
                 }
 
                 window.clear(sf::Color(30, 30, 30));
