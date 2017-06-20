@@ -1,11 +1,11 @@
 #include <SFML/Graphics.hpp>
 
-class Tiny2cDebug {
+class Tinyc2Debug {
 private:
     sf::RenderTarget& mTarget;
 
 public:
-    Tiny2cDebug( sf::RenderTarget& target )
+    Tinyc2Debug( sf::RenderTarget& target )
         : mTarget( target )
     {
 
