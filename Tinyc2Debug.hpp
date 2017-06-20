@@ -80,9 +80,8 @@ public:
 
         void draw(const c2Manifold& manifold, sf::Color color = sf::Color::White)
         {
-                c2v n = manifold.normal;
-
                 for (int i = 0; i < manifold.count; ++i) {
+                        c2v n = manifold.normal;
                         c2v p = manifold.contact_points[i];
                         float d = manifold.depths[i];
                         n.x = n.x * d;
