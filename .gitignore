@@ -1,0 +1,7 @@
+# make
+Makefile
+app.make
+
+# Binary files
+obj/
+app
