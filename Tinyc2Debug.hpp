@@ -80,19 +80,16 @@ public:
 
         void draw(const c2Manifold& manifold, sf::Color color = sf::Color::White)
         {
-                c2v normalScaled;
+                c2v n = manifold.normal;
 
-                normalScaled.x = manifold.normal.x * manifold.depths[0];
-                normalScaled.y = manifold.normal.y * manifold.depths[0];
+                for (int i = 0; i < manifold.count; ++i) {
+                        c2v p = manifold.contact_points[i];
+                        float d = manifold.depths[i];
+                        n.x = n.x * d;
+                        n.y = n.y * d;
 
-                if (manifold.count > 0) {
-                        draw(manifold.contact_points[0], c2Add(manifold.contact_points[0], normalScaled));
-                        draw(manifold.contact_points[0], sf::Color::Red);
-                }
-
-                if (manifold.count > 1) {
-                        draw(manifold.contact_points[1], c2Add(manifold.contact_points[1], normalScaled));
-                        draw(manifold.contact_points[1], sf::Color::Red);
+                        draw(p, c2Add(p, n));
+                        draw(p, sf::Color::Red);
                 }
         }
 };
