@@ -86,12 +86,12 @@ public:
                 normalScaled.y = manifold.normal.y * manifold.depths[0];
 
                 if (manifold.count > 0) {
-                        draw(manifold.contact_points[0], c2Add(manifold.contact_points[0], normalScale));
+                        draw(manifold.contact_points[0], c2Add(manifold.contact_points[0], normalScaled));
                         draw(manifold.contact_points[0], sf::Color::Red);
                 }
 
                 if (manifold.count > 1) {
-                        draw(manifold.contact_points[1], c2Add(manifold.contact_points[1], normalScale));
+                        draw(manifold.contact_points[1], c2Add(manifold.contact_points[1], normalScaled));
                         draw(manifold.contact_points[1], sf::Color::Red);
                 }
         }
