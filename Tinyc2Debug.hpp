@@ -96,7 +96,7 @@ public:
                 if (cast.t > 0) {
                         c2v impact = c2Impact(ray, cast.t);
 
-                        draw(impact, c2Add(impact, c2Mulvs(ray.n, 10)));
+                        draw(impact, c2Add(impact, c2Mulvs(cast.n, 10)));
                         draw(impact, sf::Color::Red);
                 }
         }
