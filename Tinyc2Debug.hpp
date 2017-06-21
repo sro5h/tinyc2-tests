@@ -84,8 +84,7 @@ public:
                         c2v n = manifold.normal;
                         c2v p = manifold.contact_points[i];
                         float d = manifold.depths[i];
-                        n.x = n.x * d;
-                        n.y = n.y * d;
+                        n = c2Mulvs(n, d);
 
                         draw(p, c2Add(p, n));
                         draw(p, sf::Color::Red);
@@ -96,6 +95,8 @@ public:
         {
                 if (cast.t > 0) {
                         c2v impact = c2Impact(ray, cast.t);
+
+                        draw(impact, c2Add(impact, c2Mulvs(ray.n, 10)));
                         draw(impact, sf::Color::Red);
                 }
         }
