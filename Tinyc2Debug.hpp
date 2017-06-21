@@ -91,4 +91,12 @@ public:
                         draw(p, sf::Color::Red);
                 }
         }
+
+        void draw(const c2Raycast& cast, const c2Ray& ray, sf::Color color = sf::Color::White)
+        {
+                if (cast.t > 0) {
+                        c2v impact = c2Impact(ray, cast.t);
+                        draw(impact, sf::Color::Red);
+                }
+        }
 };
