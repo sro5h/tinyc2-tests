@@ -445,7 +445,7 @@ int c2Collided( const void* A, const c2x* ax, C2_TYPE typeA, const void* B, cons
 		{
 		case C2_CIRCLE:  return c2CircletoPoly( *(c2Circle*)B, (const c2Poly*)A, ax );
 		case C2_AABB:    return c2AABBtoPoly( *(c2AABB*)B, (const c2Poly*)A, ax );
-		case C2_CAPSULE: return c2CapsuletoPoly( *(c2Capsule*)A, (const c2Poly*)A, ax );
+		case C2_CAPSULE: return c2CapsuletoPoly( *(c2Capsule*)B, (const c2Poly*)A, ax );
 		case C2_POLY:    return c2PolytoPoly( (const c2Poly*)A, ax, (const c2Poly*)B, bx );
 		default:         return 0;
 		}
@@ -1171,10 +1171,11 @@ void c2CircletoCircleManifold( c2Circle A, c2Circle B, c2Manifold* m )
 	if ( d2 < r * r )
 	{
 		float l = c2Sqrt( d2 );
+		c2v n = l != 0 ? c2Mulvs( d, 1.0f / l ) : c2V( 0, 1.0f );
 		m->count = 1;
 		m->depths[ 0 ] = r - l;
-		m->contact_points[ 0 ] = c2Mulvs( c2Add( A.p, B.p ), 0.5f );
-		m->normal = l != 0 ? c2Mulvs( d, 1.0f / l ) : c2V( 0, 1.0f );
+		m->contact_points[ 0 ] = c2Sub( B.p, c2Mulvs( n, B.r ) );
+		m->normal = n;
 	}
 }
 
@@ -1191,10 +1192,10 @@ void c2CircletoAABBManifold( c2Circle A, c2AABB B, c2Manifold* m )
 		if ( d2 != 0 )
 		{
 			float d = c2Sqrt( d2 );
-			c2v n = c2Norm( c2Neg( ab ) );
+			c2v n = c2Norm( ab );
 			m->count = 1;
 			m->depths[ 0 ] = A.r - d;
-			m->contact_points[ 0 ] = c2Add( A.p, c2Mulvs( n, -d ) );
+			m->contact_points[ 0 ] = c2Add( A.p, c2Mulvs( n, d ) );
 			m->normal = n;
 		}
 
@@ -1213,13 +1214,13 @@ void c2CircletoAABBManifold( c2Circle A, c2AABB B, c2Manifold* m )
 			{
 				if ( d.x < 0 )
 				{
-					n = c2V( -1.0f, 0 );
+					n = c2V( 1.0f, 0 );
 					p.x = mid.x - e.x;
 				}
 
 				else
 				{
-					n = c2V( 1.0f, 0 );
+					n = c2V( -1.0f, 0 );
 					p.x = mid.x + e.x;
 				}
 				depth = e.x - abs_d.x;
@@ -1228,19 +1229,19 @@ void c2CircletoAABBManifold( c2Circle A, c2AABB B, c2Manifold* m )
 			{
 				if ( d.y < 0 )
 				{
-					n = c2V( 0, -1.0f );
+					n = c2V( 0, 1.0f );
 					p.y = mid.y - e.y;
 				}
 
 				else
 				{
-					n = c2V( 0, 1.0f );
+					n = c2V( 0, -1.0f );
 					p.y = mid.y + e.y;
 				}
 				depth = e.y - abs_d.y;
 			}
 			m->count = 1;
-			m->depths[ 0 ] = depth;
+			m->depths[ 0 ] = A.r + depth;
 			m->contact_points[ 0 ] = p;
 			m->normal = n;
 		}
@@ -1397,8 +1398,8 @@ void c2CircletoPolyManifold( c2Circle A, const c2Poly* B, const c2x* bx_tr, c2Ma
 		c2v p = c2Project( h, local );
 		m->count = 1;
 		m->contact_points[ 0 ] = c2Mulxv( bx, p );
-		m->depths[ 0 ] = sep;
-		m->normal = c2Mulrv( bx.r, B->norms[ index ] );
+		m->depths[ 0 ] = A.r - sep;
+		m->normal = c2Neg( c2Mulrv( bx.r, B->norms[ index ] ) );
 	}
 }
 
