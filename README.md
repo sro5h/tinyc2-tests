@@ -21,3 +21,6 @@ g++ CircleToCircle.cpp -I. -lsfml-system -lsfml-window -lsfml-graphics
 
 ## Controls
 Used `wasd` to move the shape across the screen (not working for `PolygonToX` yet). For `RayToX` tests the ray's direction can be manipulated by moving the mouse.
+
+## License
+`tinyc2-tests` uses the same license as `tinyheaders`, the [zlib license](https://www.zlib.net/zlib_license.html).
