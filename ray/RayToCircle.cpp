@@ -59,13 +59,15 @@ int main()
 
                 // Raycast
                 c2Raycast cast;
-                c2RaytoCircle(ray, circle, &cast);
+                int hit = c2RaytoCircle(ray, circle, &cast);
 
                 window.clear(sf::Color(30, 30, 30));
 
                 tinyc2Debug.draw(ray, COLOR_NORMAL);
                 tinyc2Debug.draw(circle, COLOR_NORMAL);
-                tinyc2Debug.draw(cast, ray);
+                if (hit) {
+                        tinyc2Debug.draw(cast, ray);
+                }
 
                 window.display();
         }

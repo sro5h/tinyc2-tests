@@ -63,13 +63,15 @@ int main()
 
                 // Raycast
                 c2Raycast cast;
-                c2RaytoAABB(ray, aabb, &cast);
+                int hit = c2RaytoAABB(ray, aabb, &cast);
 
                 window.clear(sf::Color(30, 30, 30));
 
                 tinyc2Debug.draw(ray, COLOR_NORMAL);
                 tinyc2Debug.draw(aabb, COLOR_NORMAL);
-                tinyc2Debug.draw(cast, ray);
+                if (hit) {
+                        tinyc2Debug.draw(cast, ray);
+                }
 
                 window.display();
         }

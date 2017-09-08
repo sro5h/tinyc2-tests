@@ -59,13 +59,15 @@ int main()
 
                 // Raycast
                 c2Raycast cast;
-                c2RaytoPoly(ray, &poly, NULL, &cast);
+                int hit = c2RaytoPoly(ray, &poly, NULL, &cast);
 
                 window.clear(sf::Color(30, 30, 30));
 
                 tinyc2Debug.draw(ray, COLOR_NORMAL);
                 tinyc2Debug.draw(poly, COLOR_NORMAL);
-                tinyc2Debug.draw(cast, ray);
+                if (hit) {
+                        tinyc2Debug.draw(cast, ray);
+                }
 
                 window.display();
         }
