@@ -1,7 +1,10 @@
-# make
+# Make
 Makefile
 *.make
 
 # Binary files
 obj/
 build/
+
+# Tags
+tags
