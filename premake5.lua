@@ -7,7 +7,7 @@ workspace "Tests"
         configurations { "Debug", "Release" }
         kind "ConsoleApp"
         language "C++"
-        targetdir "build"
+        basedir "build"
         includedirs { "." }
 
         filter "configurations:Debug"
