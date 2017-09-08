@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #define TINYC2_IMPL
-#include "../tinyc2.h"
-#include "../Tinyc2Debug.hpp"
+#include "tinyc2.h"
+#include "Tinyc2Debug.hpp"
 
 #define SPEED 70.0f
 #define COLOR_NORMAL sf::Color(41, 128, 185)

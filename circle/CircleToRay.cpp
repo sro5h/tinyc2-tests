@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 #define TINYC2_IMPL
-#include "../tinyc2.h"
-#include "../Tinyc2Debug.hpp"
+#include "tinyc2.h"
+#include "Tinyc2Debug.hpp"
 
 #define SPEED 70.0f
 #define COLOR_NORMAL sf::Color(41, 128, 185)
@@ -20,17 +20,13 @@ int main()
         // Create ray
         c2Ray ray;
         ray.p = c2V(100, 100);
-        ray.d = c2Norm(c2V(2, 1));
-        ray.t = 300;
+        ray.d = c2Norm(c2V(1, 2));
+        ray.t = 3000;
 
-        // Create polygon
-        c2Poly poly;
-        poly.count = 4;
-        poly.verts[0] = c2V(200, 150);
-        poly.verts[1] = c2V(350, 180);
-        poly.verts[2] = c2V(380, 250);
-        poly.verts[3] = c2V(180, 280);
-        c2MakePoly(&poly);
+        // Create circle
+        c2Circle circle;
+        circle.p = c2V(200, 200);
+        circle.r = 30;
 
         sf::Clock clock;
         while (window.isOpen()) {
@@ -49,22 +45,26 @@ int main()
                 }
 
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+                        circle.p.x -= SPEED * elapsed;
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+                        circle.p.x += SPEED * elapsed;
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+                        circle.p.y -= SPEED * elapsed;
                 }
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+                        circle.p.y += SPEED * elapsed;
                 }
 
                 // Raycast
                 c2Raycast cast;
-                int hit = c2RaytoPoly(ray, &poly, NULL, &cast);
+                int hit = c2RaytoCircle(ray, circle, &cast);
 
                 window.clear(sf::Color(30, 30, 30));
 
                 tinyc2Debug.draw(ray, COLOR_NORMAL);
-                tinyc2Debug.draw(poly, COLOR_NORMAL);
+                tinyc2Debug.draw(circle, COLOR_NORMAL);
                 if (hit) {
                         tinyc2Debug.draw(cast, ray);
                 }

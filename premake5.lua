@@ -20,23 +20,26 @@ workspace "Tests"
                 symbols "Off"
                 links { "sfml-system", "sfml-window", "sfml-graphics" }
 
-project "AabbToPolygon"
-        files { "aabb/AabbToPolygon.cpp" }
+project "AABBToPolygon"
+        files { "aabb/AABBToPolygon.cpp" }
+
+project "AABBToRay"
+        files { "aabb/AABBToRay.cpp" }
 
 project "CircleToCircle"
         files { "circle/CircleToCircle.cpp" }
 
+project "CircleToRay"
+        files { "circle/CircleToRay.cpp" }
+
 project "CircleToPolygon"
         files { "circle/CircleToPolygon.cpp" }
 
-project "RayToAabb"
-        files { "ray/RayToAabb.cpp" }
+project "PolygonToRay"
+        files { "polygon/PolygonToRay.cpp" }
 
-project "RayToCircle"
-        files { "ray/RayToCircle.cpp" }
-
-project "RayToPolygon"
-        files { "ray/RayToPolygon.cpp" }
+project "RayToAABB"
+        files { "ray/RayToAABB.cpp" }
 
 -- Removes all generated and compiled files
 newaction {
