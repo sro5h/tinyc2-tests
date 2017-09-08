@@ -4,7 +4,7 @@ if not _ACTION then
 end
 
 workspace "Tests"
-        configurations { "Debug" }
+        configurations { "Debug", "Release" }
         kind "ConsoleApp"
         language "C++"
         targetdir "build"
@@ -13,6 +13,11 @@ workspace "Tests"
         filter "configurations:Debug"
                 defines { "_DEBUG" }
                 symbols "On"
+                links { "sfml-system", "sfml-window", "sfml-graphics" }
+
+        filter "configurations:Release"
+                defines { "_RELEASE" }
+                symbols "Off"
                 links { "sfml-system", "sfml-window", "sfml-graphics" }
 
 project "AabbToPolygon"
