@@ -16,7 +16,7 @@ After the build has finished, you can find all the binaries inside `build/bin/{D
 ## Manual installation
 As `tinyc2.h` is included with `tinyc2-tests` you only need to install and link against `SFML 2.4.x`. For Linux a simple g++ command should suffice:
 ```sh
-g++ CircleToCircle.cpp -I. -lsfml-system -lsfml-window -lsfml-graphics
+g++ circle/CircleToCircle.cpp -I. -lsfml-graphics -lsfml-window -lsfml-system
 ```
 
 ## Controls
