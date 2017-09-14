@@ -1,3 +1,6 @@
+#ifndef _TINYC2_DEBUG_HPP
+#define _TINYC2_DEBUG_HPP
+
 #include <SFML/Graphics.hpp>
 
 class Tinyc2Debug {
@@ -121,3 +124,5 @@ public:
           3. This notice may not be removed or altered from any source
              distribution.
 */
+
+#endif // _TINYC2_DEBUG_HPP
