@@ -29,6 +29,9 @@ project "AABBToRay"
 project "CircleToCircle"
         files { "circle/CircleToCircle.cpp" }
 
+project "CircleToAABB"
+        files { "circle/CircleToAABB.cpp" }
+
 project "CircleToRay"
         files { "circle/CircleToRay.cpp" }
 
