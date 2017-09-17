@@ -63,7 +63,11 @@ int main()
 
                 // Raycast
                 c2Raycast cast;
+#ifdef USE_GENERIC_FUNCTION
+                int hit = c2CastRay(ray, &aabb, NULL, C2_AABB, &cast);
+#else
                 int hit = c2RaytoAABB(ray, aabb, &cast);
+#endif
 
                 window.clear(sf::Color(30, 30, 30));
 
