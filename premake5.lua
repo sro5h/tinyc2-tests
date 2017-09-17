@@ -44,6 +44,9 @@ project "PolygonToRay"
 project "RayToAABB"
         files { "ray/RayToAABB.cpp" }
 
+project "RayToCircle"
+        files { "ray/RayToCircle.cpp" }
+
 -- Removes all generated and compiled files
 newaction {
         trigger = "clean",
