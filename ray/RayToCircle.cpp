@@ -21,7 +21,7 @@ int main()
         c2Ray ray;
         ray.p = c2V(100, 100);
         ray.d = c2Norm(c2V(2, 1));
-        ray.t = 1;
+        ray.t = 128;
 
         // Create circle
         c2Circle circle;
@@ -60,6 +60,7 @@ int main()
                 sf::Vector2i mousePos = sf::Mouse::getPosition(window);
                 ray.d.x = mousePos.x - ray.p.x;
                 ray.d.y = mousePos.y - ray.p.y;
+                ray.d = c2Norm(ray.d);
 
                 // Raycast
                 c2Raycast cast;
