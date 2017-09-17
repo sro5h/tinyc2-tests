@@ -3,7 +3,6 @@
 #include "tinyc2.h"
 #include "Tinyc2Debug.hpp"
 
-#define USE_GENERIC_FUNCTION
 #define SPEED 70.0f
 #define COLOR_NORMAL sf::Color(41, 128, 185)
 #define COLOR_HIT sf::Color(231, 76, 60)
