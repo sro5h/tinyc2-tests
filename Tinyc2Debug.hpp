@@ -62,6 +62,33 @@ public:
                 mTarget.draw(shape, 2, sf::Lines);
         }
 
+        void draw(const c2Capsule& capsule, sf::Color color = sf::Color::White)
+        {
+                sf::CircleShape circle(capsule.r);
+                circle.setOrigin(capsule.r, capsule.r);
+                circle.setFillColor(sf::Color::Transparent);
+                circle.setOutlineColor(color);
+                circle.setOutlineThickness(1.0f);
+
+                sf::Vertex topLine[] = {
+                        sf::Vertex(sf::Vector2f(capsule.a.x, capsule.a.y + capsule.r), color),
+                        sf::Vertex(sf::Vector2f(capsule.b.x, capsule.b.y + capsule.r), color)
+                };
+
+                sf::Vertex bottomLine[] = {
+                        sf::Vertex(sf::Vector2f(capsule.a.x, capsule.a.y - capsule.r), color),
+                        sf::Vertex(sf::Vector2f(capsule.b.x, capsule.b.y - capsule.r), color)
+                };
+
+                circle.setPosition(capsule.a.x, capsule.a.y);
+                mTarget.draw(circle);
+                circle.setPosition(capsule.b.x, capsule.b.y);
+                mTarget.draw(circle);
+
+                mTarget.draw(topLine, 2, sf::Lines);
+                mTarget.draw(bottomLine, 2, sf::Lines);
+        }
+
         void draw(const c2v& point1, const c2v& point2, sf::Color color = sf::Color::White)
         {
                 sf::Vertex shape[] = {

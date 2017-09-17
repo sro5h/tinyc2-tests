@@ -26,11 +26,14 @@ project "AABBToPolygon"
 project "AABBToRay"
         files { "aabb/AABBToRay.cpp" }
 
-project "CircleToCircle"
-        files { "circle/CircleToCircle.cpp" }
-
 project "CircleToAABB"
         files { "circle/CircleToAABB.cpp" }
+
+project "CircleToCapsule"
+        files { "circle/CircleToCapsule.cpp" }
+
+project "CircleToCircle"
+        files { "circle/CircleToCircle.cpp" }
 
 project "CircleToRay"
         files { "circle/CircleToRay.cpp" }
