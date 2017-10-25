@@ -26,6 +26,9 @@ project "AABBToPolygon"
 project "AABBToRay"
         files { "aabb/AABBToRay.cpp" }
 
+project "AABBToCapsule"
+        files { "aabb/AABBToCapsule.cpp" }
+
 project "CircleToAABB"
         files { "circle/CircleToAABB.cpp" }
 
