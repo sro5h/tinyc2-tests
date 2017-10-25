@@ -44,6 +44,9 @@ project "CircleToRay"
 project "CircleToPolygon"
         files { "circle/CircleToPolygon.cpp" }
 
+project "CapsuleToCapsule"
+        files { "capsule/CapsuleToCapsule.cpp" }
+
 project "PolygonToRay"
         files { "polygon/PolygonToRay.cpp" }
 
