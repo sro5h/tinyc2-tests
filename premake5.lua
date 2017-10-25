@@ -32,6 +32,9 @@ project "AABBToCapsule"
 project "CapsuleToCapsule"
         files { "capsule/CapsuleToCapsule.cpp" }
 
+project "CapsuleToPolygon"
+        files { "capsule/CapsuleToPolygon.cpp" }
+
 project "CircleToAABB"
         files { "circle/CircleToAABB.cpp" }
 
