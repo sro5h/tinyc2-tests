@@ -56,6 +56,9 @@ project "PolygonToRay"
 project "RayToAABB"
         files { "ray/RayToAABB.cpp" }
 
+project "RayToCapsule"
+        files { "ray/RayToCapsule.cpp" }
+
 project "RayToCircle"
         files { "ray/RayToCircle.cpp" }
 
