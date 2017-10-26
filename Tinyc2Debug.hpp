@@ -16,7 +16,7 @@ public:
 
         void draw(const c2Poly& poly, sf::Color color = sf::Color::White)
         {
-                sf::Vertex shape[poly.count + 1];
+                sf::Vertex shape[C2_MAX_POLYGON_VERTS];
 
                 for (int i = 0; i < poly.count; i++) {
                         shape[i] = sf::Vertex(sf::Vector2f(poly.verts[i].x, poly.verts[i].y), color);
