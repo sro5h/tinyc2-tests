@@ -14,11 +14,13 @@ workspace "Tests"
                 defines { "_DEBUG" }
                 symbols "On"
                 links { "sfml-system", "sfml-window", "sfml-graphics" }
+                buildoptions { "-Wpedantic", "-Wall" }
 
         filter "configurations:Release"
                 defines { "_RELEASE" }
                 symbols "Off"
                 links { "sfml-system", "sfml-window", "sfml-graphics" }
+                buildoptions { "-Wpedantic", "-Wall" }
 
 project "AABBToPolygon"
         files { "aabb/AABBToPolygon.cpp" }
