@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#define TINYC2_IMPL
+#define TINYC2_IMPLEMENTATION
 #include "tinyc2.h"
 #include "Tinyc2Debug.hpp"
 
